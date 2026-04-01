@@ -12,8 +12,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+
 @Service
-public class ProductServiceImpl {
+public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;

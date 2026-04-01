@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class CategoryServiceImpl {
+public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
@@ -29,18 +29,22 @@ public class CategoryServiceImpl {
         this.productMapper = productMapper;
     }
 
+    @Override
     public CategoryResponseDto create(CategoryRequestDto dto) {
         Category category = CategoryMapper.toEntity(dto);
         Category saved = categoryRepository.save(category);
         return CategoryMapper.toResponseDto(saved);
     }
 
+    @Override
     public List<CategoryResponseDto> getAll() {
         return categoryRepository.findAll()
                 .stream()
                 .map(CategoryMapper::toResponseDto)
                 .toList();
     }
+
+    @Override
 
     public void addProduct(UUID categoryId, UUID productId) {
         Category category = categoryRepository.findById(categoryId)
@@ -52,7 +56,7 @@ public class CategoryServiceImpl {
         product.getCategories().add(category);
         productRepository.save(product);
     }
-
+    @Override
     public List<ProductResponseDto> getProducts(UUID categoryId) {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
