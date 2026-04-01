@@ -4,6 +4,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class ProductResponseDto {
 
@@ -13,19 +21,9 @@ public class ProductResponseDto {
     private LocalDate expirationDate;
     private List<String> categoryNames;
 
-    public ProductResponseDto() {
-    }
 
-    public ProductResponseDto(UUID id, String productName,
-                              BigDecimal price,
-                              LocalDate expirationDate,
-                              List<String> categoryNames) {
-        this.id = id;
-        this.productName = productName;
-        this.price = price;
-        this.expirationDate = expirationDate;
-        this.categoryNames = categoryNames;
-    }
+
+
 
     public UUID getId() {
         return id;

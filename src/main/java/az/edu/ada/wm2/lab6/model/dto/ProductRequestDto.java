@@ -4,7 +4,15 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductRequestDto {
 
     private String productName;
@@ -12,16 +20,8 @@ public class ProductRequestDto {
     private LocalDate expirationDate;
     private List<UUID> categoryIds;
 
-    public ProductRequestDto() {
-    }
 
-    public ProductRequestDto(String productName, BigDecimal price,
-                             LocalDate expirationDate, List<UUID> categoryIds) {
-        this.productName = productName;
-        this.price = price;
-        this.expirationDate = expirationDate;
-        this.categoryIds = categoryIds;
-    }
+
 
     public String getProductName() {
         return productName;

@@ -5,7 +5,15 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Product {
 
@@ -17,21 +25,7 @@ public class Product {
     private BigDecimal price;
     private LocalDate expirationDate;
 
-    public Product() {
-    }
 
-    public Product(String productName, BigDecimal price, LocalDate expirationDate) {
-        this.productName = productName;
-        this.price = price;
-        this.expirationDate = expirationDate;
-    }
-
-    public Product(UUID id, String productName, BigDecimal price, LocalDate expirationDate) {
-        this.id = id;
-        this.productName = productName;
-        this.price = price;
-        this.expirationDate = expirationDate;
-    }
 
     public UUID getId() {
         return id;
